@@ -1,0 +1,38 @@
+# Pixiv 图片下载管理器 - 全局设置
+# 请勿将本文件中的敏感信息（如 refresh_token）提交到 Git！
+
+# 下载根目录（相对于项目根目录，或填写绝对路径）
+download_dir: "downloads"
+
+# 每个标签最多搜索的页数（每页约30张）
+max_search_pages: 99999
+
+# API 请求间隔（秒），建议不低于 2 秒，避免被 Pixiv 限流
+request_delay: 2.0
+
+# 下载失败重试次数
+max_retries: 3
+
+# 并发下载线程数
+max_workers: 3
+
+# NSFW 检测（需要 pip install opennsfw2，首次运行会下载约 150MB 模型）
+nsfw:
+  enabled: false          # 是否启用（true / false）
+  threshold: 0.85         # 阈值（0~1），达到即移入 _待审核/
+  device: "cpu"           # 推理设备：cpu / cuda / directml
+
+# 全局过滤标签（所有作品统一生效）
+global_exclude_tags:
+  - "R18"
+  - "R-18"
+
+# Pixiv 登录信息（二选一即可，优先使用 refresh_token）
+pixiv:
+  # 方式 A：App API OAuth token（需要 accounts.pixiv.net 可访问）
+  refresh_token: ""
+
+  # 方式 B：网站 Cookie 鉴权
+  # 从浏览器 F12 → Network → 任一条 ajax 请求 → Request Headers → Cookie: 整行复制到这里
+  # 适用于 accounts.pixiv.net 被墙的情况
+  cookie_string: ""

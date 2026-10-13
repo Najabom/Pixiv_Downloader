@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg text-text-main min-h-screen antialiased;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface rounded-xl transition-all duration-500 ease-lusion;
+    box-shadow: var(--shadow);
+  }
+  .card-hover:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-hover);
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-medium text-white transition-all duration-500 ease-lusion hover:shadow-lg hover:scale-[1.02];
+    background-color: var(--primary);
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-surface text-text-main font-medium transition-all duration-500 ease-lusion hover:shadow-card;
+    border: 1px solid color-mix(in srgb, var(--text-muted) 20%, transparent);
+  }
+  .btn-secondary:hover {
+    border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  }
+  .input {
+    @apply w-full px-4 py-2.5 rounded-xl bg-surface text-text-main focus:outline-none focus:ring-2 transition-all duration-300;
+    border: 1px solid color-mix(in srgb, var(--text-muted) 20%, transparent);
+  }
+  .input::placeholder {
+    color: var(--text-muted);
+  }
+  .input:focus {
+    border-color: color-mix(in srgb, var(--primary) 50%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 10%, transparent);
+  }
+}

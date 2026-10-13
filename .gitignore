@@ -1,0 +1,54 @@
+# === 敏感信息 ===
+config/settings.yaml
+.cookie_backup.txt
+
+# === Python ===
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.pyc
+
+# === 运行时数据 ===
+downloads/
+data/
+logs/*.log
+
+# === 前端 ===
+node_modules/
+webui/frontend/dist/
+webui/frontend/.eslintcache
+
+# === 构建产物 ===
+build_tmp/
+build/
+dist/
+*.spec.bak
+PixivDownloader.zip
+
+# === 缩略图缓存 ===
+webui/backend/thumbnails/
+
+# === PyInstaller ===
+*.manifest
+warn-*.txt
+xref-*.html
+
+# === AI 会话日志 ===
+session-ses_*.md
+
+# === 个人配置与发布产物 ===
+config/
+packaged/
+webui/backend/services/ui_config.json
+
+# === 系统文件 ===
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo

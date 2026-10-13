@@ -1,0 +1,18 @@
+works:
+- name: 示例作品
+  search_tags: []
+  tags:
+  - folder: 角色A
+    tags:
+    - 角色A的Pixiv标签
+  - folder: 角色B
+    tags:
+    - 角色BのPixivタグ
+  cp_tags:
+  - members:
+    - 角色A
+    - 角色B
+    search_tags:
+    - 角色Ax角色B
+  exclude_tags: []
+  active: true
