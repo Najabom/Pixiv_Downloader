@@ -25,7 +25,7 @@
 - **CP 配对识别**：通过标签组合识别 CP 作品，单人 / 多人 / 组图自动分类
 - **NSFW 检测**（可选）：基于 opennsfw2，超阈值图片自动移入 `_待审核/`
 - **Cookie / OAuth 双鉴权**：支持网站 Cookie 或 App API refresh_token
-- **一键打包**：PyInstaller 构建独立 exe，无需 Python 环境
+- **一键打包**：PyInstaller onedir 模式（exe 仅含程序本体，运行时依赖以外部文件存放），构建后自动生成 7z / zip 发行包，无需 Python 环境
 
 ### 技术栈
 
@@ -136,13 +136,16 @@ npm run build                    # 生产构建
   6. 更新 tag_checkpoint.json（断点续传）
 ```
 
-### 构建可执行文件
+### 构建发行包
 
 ```bash
-.\build.bat    # 自动构建前端 + 生成 PDF + PyInstaller 打包
+.\build.bat    # 自动构建前端 + 生成 PDF + PyInstaller (onedir) + 打包 7z/zip
 ```
 
-构建产物位于 `packaged/`（不提交到 git，通过 GitHub Releases 分发）。
+构建产物位于 `packaged/`（不提交到 git，通过 GitHub Releases 分发）：
+
+- `PixivDownloader/` — 解压即用的程序文件夹（`PixivDownloader.exe` + `_internal/` 依赖 + 用户指南.pdf）
+- `PixivDownloader-v1.0.0.7z` / `PixivDownloader-v1.0.0.zip` — 发行压缩包
 
 ### 注意事项
 
@@ -162,7 +165,7 @@ npm run build                    # 生产构建
 - **CP pairing detection**: recognizes CP works by tag combinations; auto-classifies solo / multi-character / image sets
 - **Optional NSFW detection** via opennsfw2; flagged images are moved to `_待审核/` (pending review)
 - **Dual authentication**: site cookie or App API `refresh_token`
-- **One-click packaging**: standalone Windows exe via PyInstaller
+- **One-click packaging**: PyInstaller onedir build (the exe contains only the app itself; runtime dependencies are kept as external files), auto-packaged into 7z / zip release archives, no Python required
 
 ### Tech Stack
 
@@ -189,10 +192,13 @@ On first run, `config/` is auto-created from `templates/` — edit `config/setti
 ### Build
 
 ```bash
-.\build.bat    # build frontend + PDF + PyInstaller package
+.\build.bat    # build frontend + PDF + PyInstaller (onedir) + package 7z/zip
 ```
 
-Output goes to `packaged/` (not committed; distributed via GitHub Releases).
+Output goes to `packaged/` (not committed; distributed via GitHub Releases):
+
+- `PixivDownloader/` — portable app folder (`PixivDownloader.exe` + `_internal/` runtime + user guide)
+- `PixivDownloader-v1.0.0.7z` / `PixivDownloader-v1.0.0.zip` — release archives
 
 ---
 
