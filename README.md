@@ -136,6 +136,12 @@ npm run build                    # 生产构建
   6. 更新 tag_checkpoint.json（断点续传）
 ```
 
+### 运行发行包（Windows）
+
+从 [GitHub Releases](https://github.com/Najabom/Pixiv_Downloader/releases) 下载 `PixivDownloader-vX.Y.Z.7z`（或 `.zip`），解压到任意可写目录（如 `D:\Tools\PixivDownloader`，不建议放在 `C:\Program Files` 等受管目录），双击 `PixivDownloader.exe` 启动。
+
+> ⚠️ 首次运行可能弹出 Windows SmartScreen 提示（"Windows 已保护你的电脑"）：这是未签名程序的常规提示，并非检测到病毒。点击"更多信息 → 仍要运行"，或右键 exe → 属性 → 勾选底部"解除锁定" → 确定，即可正常启动。可在 Release 页面比对 SHA256 校验值，确认下载的文件完整且未被篡改。
+
 ### 构建发行包
 
 ```bash
@@ -145,7 +151,7 @@ npm run build                    # 生产构建
 构建产物位于 `packaged/`（不提交到 git，通过 GitHub Releases 分发）：
 
 - `PixivDownloader/` — 解压即用的程序文件夹（`PixivDownloader.exe` + `_internal/` 依赖 + 用户指南.pdf）
-- `PixivDownloader-v1.0.0.7z` / `PixivDownloader-v1.0.0.zip` — 发行压缩包
+- `PixivDownloader-v1.0.1.7z` / `PixivDownloader-v1.0.1.zip` — 发行压缩包
 
 ### 注意事项
 
@@ -189,6 +195,12 @@ On first run, `config/` is auto-created from `templates/` — edit `config/setti
 
 > 🔒 `config/` is git-ignored. **Never** commit files containing cookies or tokens.
 
+### Running the Release (Windows)
+
+Download `PixivDownloader-vX.Y.Z.7z` (or `.zip`) from [GitHub Releases](https://github.com/Najabom/Pixiv_Downloader/releases), extract it to any writable folder (e.g. `D:\Tools\PixivDownloader`; avoid managed locations like `C:\Program Files`), and run `PixivDownloader.exe`.
+
+> ⚠️ On first launch, Windows SmartScreen may show "Windows protected your PC" — this is a standard warning for unsigned software, not a virus detection. Click "More info → Run anyway", or right-click the exe → Properties → check "Unblock" → OK. You can compare the SHA256 values listed on the Releases page to verify the download is intact and unmodified.
+
 ### Build
 
 ```bash
@@ -198,7 +210,7 @@ On first run, `config/` is auto-created from `templates/` — edit `config/setti
 Output goes to `packaged/` (not committed; distributed via GitHub Releases):
 
 - `PixivDownloader/` — portable app folder (`PixivDownloader.exe` + `_internal/` runtime + user guide)
-- `PixivDownloader-v1.0.0.7z` / `PixivDownloader-v1.0.0.zip` — release archives
+- `PixivDownloader-v1.0.1.7z` / `PixivDownloader-v1.0.1.zip` — release archives
 
 ---
 

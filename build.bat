@@ -5,7 +5,7 @@ echo.
 
 cd /d "%~dp0"
 
-set "VER=v1.0.0"
+set "VER=v1.0.1"
 set "SEVENZIP=C:\Program Files\7-Zip\7z.exe"
 if not exist "%SEVENZIP%" set "SEVENZIP=7z"
 

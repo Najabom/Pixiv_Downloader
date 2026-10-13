@@ -1,34 +1,41 @@
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useThemeStore = defineStore('theme', () => {
-  const isDark = ref(false)
+export type ThemeMode = 'auto' | 'light' | 'dark'
 
-  const init = () => {
+const media = window.matchMedia('(prefers-color-scheme: dark)')
+
+export const useThemeStore = defineStore('theme', () => {
+  const mode = ref<ThemeMode>(readMode())
+  const systemDark = ref(media.matches)
+
+  const isDark = computed(() =>
+    mode.value === 'auto' ? systemDark.value : mode.value === 'dark'
+  )
+
+  function readMode(): ThemeMode {
     const saved = localStorage.getItem('theme')
-    if (saved) {
-      isDark.value = saved === 'dark'
-    } else {
-      isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
-    }
-    apply()
+    if (saved === 'light' || saved === 'dark' || saved === 'auto') return saved
+    return 'auto'
   }
 
   const apply = () => {
-    if (isDark.value) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-    localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
+    document.documentElement.classList.toggle('dark', isDark.value)
+    localStorage.setItem('theme', mode.value)
   }
 
-  const toggle = () => {
-    isDark.value = !isDark.value
+  watch([mode, systemDark], apply)
+
+  const init = () => {
+    media.addEventListener('change', (e) => {
+      systemDark.value = e.matches
+    })
     apply()
   }
 
-  watch(isDark, apply)
+  const cycle = () => {
+    mode.value = mode.value === 'auto' ? 'light' : mode.value === 'light' ? 'dark' : 'auto'
+  }
 
-  return { isDark, init, toggle }
+  return { mode, isDark, init, cycle }
 })
